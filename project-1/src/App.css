@@ -1,0 +1,6 @@
+.App{
+  min-height: 100vh;
+  background: linear-gradient(#141e30, #243b55);
+  align-items: center;
+  color: white;
+}
