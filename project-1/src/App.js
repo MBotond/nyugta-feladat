@@ -5,13 +5,6 @@ import builder from 'xmlbuilder';
 
 function App(){
   
-  const express = require('express');
-  const app = express();
-  const path = require('path');
-  const publicPath = path.join(__dirname, '..', 'public');
-  
-  app.use(express.static(publicPath));
-
   const [key, setKey] = useState("8338185i34m5jnbx4b4djjgcqwwe2bfv3zabbpm7rk");
 
   const [nyugtaList, setList] = useState([]);
