@@ -4,3 +4,32 @@
   align-items: center;
   color: white;
 }
+
+.Key{
+  margin-left: 10px;
+  width: 100%;
+  min-height: 25px;
+}
+
+.Create{
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 100%;
+  min-height: 25px;
+}
+
+.NyugtaList{
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 100%;
+  min-height: 25px;
+}
+
+.Selected{
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 100%;
+  min-height: 25px;
+}
+
+

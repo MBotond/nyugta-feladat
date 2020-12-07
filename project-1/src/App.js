@@ -5,7 +5,7 @@ import builder from 'xmlbuilder';
 
 function App(){
   
-  const [key, setKey] = useState("8338185i34m5jnbx4b4djjgcqwwe2bfv3zabbpm7rk");
+  const [key, setKey] = useState("");
 
   const [nyugtaList, setList] = useState([]);
   const [currentlySelected, setCurrentlySelected] = useState("");
@@ -14,15 +14,15 @@ function App(){
     nyugtakep:"A",
     fizmod:"átutalás",
     penznem:"HUF",
-    megnevezes:"teszt",     //TO-DO
-    mennyiseg:"10",         //To-do
+    megnevezes:"",
+    mennyiseg:"",
     mennyisegiEgyseg:"db",  
-    nettoEgysegar:"750",   //to-do
+    nettoEgysegar:"",
   });
 
   const [email, setEmail] = useState("");
 
-  const afaMagyarorszag = 27;
+  const afaMagyarorszag = 27; //Esetleg választható legyen mint a többi paraméter
 
   const changeKey = (e) => {
     setKey(e.target.value);
@@ -55,7 +55,8 @@ function App(){
     
     var beallitasok = xml.ele('beallitasok');
     beallitasok.ele('szamlaagentkulcs', key);
-    beallitasok.ele('pdfLetoltes', true);
+    beallitasok.ele('pdfLetoltes', true);   //Gyorsabb ha "false"-ra van állítva, ellenben a demoban így látjuk az eredményt
+    //beallitasok.ele('nyugtakep', nyugta.nyugtakep);
 
     var fejlec = xml.ele('fejlec');
     fejlec.ele('elotag', 'NYGTA');
@@ -114,8 +115,7 @@ function App(){
     
     var beallitasok = xml.ele('beallitasok');
     beallitasok.ele('szamlaagentkulcs', key);
-    beallitasok.ele('pdfLetoltes', true);
-    beallitasok.ele('nyugtakep', nyugta.nyugtakep); //
+    beallitasok.ele('pdfLetoltes', true); //Gyorsabb ha "false"-ra van állítva, ellenben a demoban így látjuk az eredményt
 
     var fejlec = xml.ele('fejlec');
     fejlec.ele('nyugtaszam', currentlySelected);
@@ -239,6 +239,7 @@ function App(){
   
   return (
     <div className="App">
+      <div className="Key">
       <h2>The user's szamla agent key:&nbsp;{key}</h2>
       <form >
         Szamla Agent Key:
@@ -248,7 +249,9 @@ function App(){
           onChange = {changeKey}
         />
       </form>
+      </div>
       <br/>
+      <div className="Create">
       <h2>Új nyugta készítése</h2>
       <form>
           <label> Válasszon nyugtaképet:</label>
@@ -316,16 +319,19 @@ function App(){
           /><br/><br/>
 
           <button  type="button" onClick={CreateNyugta}>Nyugta kiállítása</button><br/><br/>
-      </form>     
-      <div className="nyugtaList">
-        
+      </form>    
+      </div>
+      <br/>
+      <div className="NyugtaList">
         <h2>Nyugták listája:</h2>
-        
         <ul>
             {nyugtaList.map( val =>(
               <li key={val} id={val} onClick={updateCurrentlySelected}>{val}</li>
             ))}
         </ul>
+      </div>
+      <br/>
+      <div className="Selected">
         <br/>
         <h2>Jelenleg kiválasztott nyugta: {currentlySelected}</h2>
         <br/>
